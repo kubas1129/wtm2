@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ACD3F6442369FB2200BEDED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F6432369FB2200BEDED9 /* AppDelegate.swift */; };
+		ACD3F6462369FB2200BEDED9 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F6452369FB2200BEDED9 /* MasterViewController.swift */; };
+		ACD3F6482369FB2200BEDED9 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F6472369FB2200BEDED9 /* DetailViewController.swift */; };
+		ACD3F64B2369FB2200BEDED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD3F6492369FB2200BEDED9 /* Main.storyboard */; };
+		ACD3F64D2369FB2300BEDED9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ACD3F64C2369FB2300BEDED9 /* Assets.xcassets */; };
+		ACD3F6502369FB2300BEDED9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ACD3F64E2369FB2300BEDED9 /* LaunchScreen.storyboard */; };
+		ACD3F65B2369FB2300BEDED9 /* SplitViewWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F65A2369FB2300BEDED9 /* SplitViewWeatherAppTests.swift */; };
+		ACD3F6662369FB2300BEDED9 /* SplitViewWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F6652369FB2300BEDED9 /* SplitViewWeatherAppUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ACD3F6572369FB2300BEDED9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACD3F6382369FB2200BEDED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACD3F63F2369FB2200BEDED9;
+			remoteInfo = SplitViewWeatherApp;
+		};
+		ACD3F6622369FB2300BEDED9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ACD3F6382369FB2200BEDED9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ACD3F63F2369FB2200BEDED9;
+			remoteInfo = SplitViewWeatherApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ACD3F6402369FB2200BEDED9 /* SplitViewWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SplitViewWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD3F6432369FB2200BEDED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		ACD3F6452369FB2200BEDED9 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		ACD3F6472369FB2200BEDED9 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		ACD3F64A2369FB2200BEDED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ACD3F64C2369FB2300BEDED9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ACD3F64F2369FB2300BEDED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ACD3F6512369FB2300BEDED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACD3F6562369FB2300BEDED9 /* SplitViewWeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplitViewWeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD3F65A2369FB2300BEDED9 /* SplitViewWeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewWeatherAppTests.swift; sourceTree = "<group>"; };
+		ACD3F65C2369FB2300BEDED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ACD3F6612369FB2300BEDED9 /* SplitViewWeatherAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SplitViewWeatherAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACD3F6652369FB2300BEDED9 /* SplitViewWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewWeatherAppUITests.swift; sourceTree = "<group>"; };
+		ACD3F6672369FB2300BEDED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ACD3F63D2369FB2200BEDED9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACD3F6532369FB2300BEDED9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACD3F65E2369FB2300BEDED9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ACD3F6372369FB2200BEDED9 = {
+			isa = PBXGroup;
+			children = (
+				ACD3F6422369FB2200BEDED9 /* SplitViewWeatherApp */,
+				ACD3F6592369FB2300BEDED9 /* SplitViewWeatherAppTests */,
+				ACD3F6642369FB2300BEDED9 /* SplitViewWeatherAppUITests */,
+				ACD3F6412369FB2200BEDED9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ACD3F6412369FB2200BEDED9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ACD3F6402369FB2200BEDED9 /* SplitViewWeatherApp.app */,
+				ACD3F6562369FB2300BEDED9 /* SplitViewWeatherAppTests.xctest */,
+				ACD3F6612369FB2300BEDED9 /* SplitViewWeatherAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ACD3F6422369FB2200BEDED9 /* SplitViewWeatherApp */ = {
+			isa = PBXGroup;
+			children = (
+				ACD3F6432369FB2200BEDED9 /* AppDelegate.swift */,
+				ACD3F6452369FB2200BEDED9 /* MasterViewController.swift */,
+				ACD3F6472369FB2200BEDED9 /* DetailViewController.swift */,
+				ACD3F6492369FB2200BEDED9 /* Main.storyboard */,
+				ACD3F64C2369FB2300BEDED9 /* Assets.xcassets */,
+				ACD3F64E2369FB2300BEDED9 /* LaunchScreen.storyboard */,
+				ACD3F6512369FB2300BEDED9 /* Info.plist */,
+			);
+			path = SplitViewWeatherApp;
+			sourceTree = "<group>";
+		};
+		ACD3F6592369FB2300BEDED9 /* SplitViewWeatherAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				ACD3F65A2369FB2300BEDED9 /* SplitViewWeatherAppTests.swift */,
+				ACD3F65C2369FB2300BEDED9 /* Info.plist */,
+			);
+			path = SplitViewWeatherAppTests;
+			sourceTree = "<group>";
+		};
+		ACD3F6642369FB2300BEDED9 /* SplitViewWeatherAppUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ACD3F6652369FB2300BEDED9 /* SplitViewWeatherAppUITests.swift */,
+				ACD3F6672369FB2300BEDED9 /* Info.plist */,
+			);
+			path = SplitViewWeatherAppUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ACD3F63F2369FB2200BEDED9 /* SplitViewWeatherApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACD3F66A2369FB2300BEDED9 /* Build configuration list for PBXNativeTarget "SplitViewWeatherApp" */;
+			buildPhases = (
+				ACD3F63C2369FB2200BEDED9 /* Sources */,
+				ACD3F63D2369FB2200BEDED9 /* Frameworks */,
+				ACD3F63E2369FB2200BEDED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SplitViewWeatherApp;
+			productName = SplitViewWeatherApp;
+			productReference = ACD3F6402369FB2200BEDED9 /* SplitViewWeatherApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ACD3F6552369FB2300BEDED9 /* SplitViewWeatherAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACD3F66D2369FB2300BEDED9 /* Build configuration list for PBXNativeTarget "SplitViewWeatherAppTests" */;
+			buildPhases = (
+				ACD3F6522369FB2300BEDED9 /* Sources */,
+				ACD3F6532369FB2300BEDED9 /* Frameworks */,
+				ACD3F6542369FB2300BEDED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ACD3F6582369FB2300BEDED9 /* PBXTargetDependency */,
+			);
+			name = SplitViewWeatherAppTests;
+			productName = SplitViewWeatherAppTests;
+			productReference = ACD3F6562369FB2300BEDED9 /* SplitViewWeatherAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		ACD3F6602369FB2300BEDED9 /* SplitViewWeatherAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ACD3F6702369FB2300BEDED9 /* Build configuration list for PBXNativeTarget "SplitViewWeatherAppUITests" */;
+			buildPhases = (
+				ACD3F65D2369FB2300BEDED9 /* Sources */,
+				ACD3F65E2369FB2300BEDED9 /* Frameworks */,
+				ACD3F65F2369FB2300BEDED9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ACD3F6632369FB2300BEDED9 /* PBXTargetDependency */,
+			);
+			name = SplitViewWeatherAppUITests;
+			productName = SplitViewWeatherAppUITests;
+			productReference = ACD3F6612369FB2300BEDED9 /* SplitViewWeatherAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ACD3F6382369FB2200BEDED9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1000;
+				LastUpgradeCheck = 1000;
+				ORGANIZATIONNAME = "Guest User";
+				TargetAttributes = {
+					ACD3F63F2369FB2200BEDED9 = {
+						CreatedOnToolsVersion = 10.0;
+					};
+					ACD3F6552369FB2300BEDED9 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = ACD3F63F2369FB2200BEDED9;
+					};
+					ACD3F6602369FB2300BEDED9 = {
+						CreatedOnToolsVersion = 10.0;
+						TestTargetID = ACD3F63F2369FB2200BEDED9;
+					};
+				};
+			};
+			buildConfigurationList = ACD3F63B2369FB2200BEDED9 /* Build configuration list for PBXProject "SplitViewWeatherApp" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ACD3F6372369FB2200BEDED9;
+			productRefGroup = ACD3F6412369FB2200BEDED9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ACD3F63F2369FB2200BEDED9 /* SplitViewWeatherApp */,
+				ACD3F6552369FB2300BEDED9 /* SplitViewWeatherAppTests */,
+				ACD3F6602369FB2300BEDED9 /* SplitViewWeatherAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ACD3F63E2369FB2200BEDED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACD3F6502369FB2300BEDED9 /* LaunchScreen.storyboard in Resources */,
+				ACD3F64D2369FB2300BEDED9 /* Assets.xcassets in Resources */,
+				ACD3F64B2369FB2200BEDED9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACD3F6542369FB2300BEDED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACD3F65F2369FB2300BEDED9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ACD3F63C2369FB2200BEDED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACD3F6482369FB2200BEDED9 /* DetailViewController.swift in Sources */,
+				ACD3F6462369FB2200BEDED9 /* MasterViewController.swift in Sources */,
+				ACD3F6442369FB2200BEDED9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACD3F6522369FB2300BEDED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACD3F65B2369FB2300BEDED9 /* SplitViewWeatherAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ACD3F65D2369FB2300BEDED9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ACD3F6662369FB2300BEDED9 /* SplitViewWeatherAppUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ACD3F6582369FB2300BEDED9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACD3F63F2369FB2200BEDED9 /* SplitViewWeatherApp */;
+			targetProxy = ACD3F6572369FB2300BEDED9 /* PBXContainerItemProxy */;
+		};
+		ACD3F6632369FB2300BEDED9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ACD3F63F2369FB2200BEDED9 /* SplitViewWeatherApp */;
+			targetProxy = ACD3F6622369FB2300BEDED9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ACD3F6492369FB2200BEDED9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ACD3F64A2369FB2200BEDED9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ACD3F64E2369FB2300BEDED9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ACD3F64F2369FB2300BEDED9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ACD3F6682369FB2300BEDED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		ACD3F6692369FB2300BEDED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ACD3F66B2369FB2300BEDED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SplitViewWeatherApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = agh.SplitViewWeatherApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ACD3F66C2369FB2300BEDED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SplitViewWeatherApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = agh.SplitViewWeatherApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		ACD3F66E2369FB2300BEDED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SplitViewWeatherAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = agh.SplitViewWeatherAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SplitViewWeatherApp.app/SplitViewWeatherApp";
+			};
+			name = Debug;
+		};
+		ACD3F66F2369FB2300BEDED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SplitViewWeatherAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = agh.SplitViewWeatherAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SplitViewWeatherApp.app/SplitViewWeatherApp";
+			};
+			name = Release;
+		};
+		ACD3F6712369FB2300BEDED9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SplitViewWeatherAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = agh.SplitViewWeatherAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SplitViewWeatherApp;
+			};
+			name = Debug;
+		};
+		ACD3F6722369FB2300BEDED9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = SplitViewWeatherAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = agh.SplitViewWeatherAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SplitViewWeatherApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ACD3F63B2369FB2200BEDED9 /* Build configuration list for PBXProject "SplitViewWeatherApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACD3F6682369FB2300BEDED9 /* Debug */,
+				ACD3F6692369FB2300BEDED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACD3F66A2369FB2300BEDED9 /* Build configuration list for PBXNativeTarget "SplitViewWeatherApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACD3F66B2369FB2300BEDED9 /* Debug */,
+				ACD3F66C2369FB2300BEDED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACD3F66D2369FB2300BEDED9 /* Build configuration list for PBXNativeTarget "SplitViewWeatherAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACD3F66E2369FB2300BEDED9 /* Debug */,
+				ACD3F66F2369FB2300BEDED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ACD3F6702369FB2300BEDED9 /* Build configuration list for PBXNativeTarget "SplitViewWeatherAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ACD3F6712369FB2300BEDED9 /* Debug */,
+				ACD3F6722369FB2300BEDED9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ACD3F6382369FB2200BEDED9 /* Project object */;
+}
