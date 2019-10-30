@@ -16,7 +16,6 @@
 		ACD3F65B2369FB2300BEDED9 /* SplitViewWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F65A2369FB2300BEDED9 /* SplitViewWeatherAppTests.swift */; };
 		ACD3F6662369FB2300BEDED9 /* SplitViewWeatherAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F6652369FB2300BEDED9 /* SplitViewWeatherAppUITests.swift */; };
 		ACD3F6742369FF8300BEDED9 /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F6732369FF8300BEDED9 /* SearchVC.swift */; };
-		ACD3F676236A01BF00BEDED9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD3F675236A01BF00BEDED9 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +51,6 @@
 		ACD3F6652369FB2300BEDED9 /* SplitViewWeatherAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewWeatherAppUITests.swift; sourceTree = "<group>"; };
 		ACD3F6672369FB2300BEDED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ACD3F6732369FF8300BEDED9 /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
-		ACD3F675236A01BF00BEDED9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../../wtm/WeatherApp19/ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +101,6 @@
 		ACD3F6422369FB2200BEDED9 /* SplitViewWeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				ACD3F675236A01BF00BEDED9 /* ViewController.swift */,
 				ACD3F6432369FB2200BEDED9 /* AppDelegate.swift */,
 				ACD3F6452369FB2200BEDED9 /* MasterViewController.swift */,
 				ACD3F6472369FB2200BEDED9 /* DetailViewController.swift */,
@@ -265,7 +262,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ACD3F676236A01BF00BEDED9 /* ViewController.swift in Sources */,
 				ACD3F6742369FF8300BEDED9 /* SearchVC.swift in Sources */,
 				ACD3F6482369FB2200BEDED9 /* DetailViewController.swift in Sources */,
 				ACD3F6462369FB2200BEDED9 /* MasterViewController.swift in Sources */,

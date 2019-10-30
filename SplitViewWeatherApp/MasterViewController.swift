@@ -37,7 +37,7 @@ class MasterViewController: UITableViewController {
 //        objects.insert(NSDate(), at: 0)
 //        let indexPath = IndexPath(row: 0, section: 0)
 //        tableView.insertRows(at: [indexPath], with: .automatic)
-        performSegue(withIdentifier: "toSearchVC", sender: nil)
+       performSegue(withIdentifier: "toSearchVC", sender: nil)
     }
 
     // MARK: - Segues
