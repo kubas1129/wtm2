@@ -98,7 +98,6 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("SEGUE DZIALA")
         let dest = segue.destination as! MasterViewController
         dest.addCity(woeid: selectCity.woeid, cityName: selectCity.name)
     }

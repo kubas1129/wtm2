@@ -188,7 +188,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="849" y="128"/>
+            <point key="canvasLocation" x="761" y="128"/>
         </scene>
         <!--SearchVC-->
         <scene sceneID="TRx-y5-Ecd">
@@ -346,7 +346,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="aOF-cO-Mjl" kind="show" identifier="toSearchVC" id="F0I-Di-z57"/>
+                                    <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="toShowDetail" id="jcx-Zl-wcC"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -356,7 +356,22 @@
                             <outlet property="delegate" destination="7bK-jq-Zjz" id="RA6-mI-bju"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
+                    <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="9ch-MG-2Dt">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="VdN-7G-iRU">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dodaj"/>
+                                <connections>
+                                    <action selector="onDodajClick:" destination="7bK-jq-Zjz" eventType="touchUpInside" id="9fM-7r-YTR"/>
+                                    <segue destination="aOF-cO-Mjl" kind="show" identifier="toSearchVC" id="ex7-wx-9xy"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="onClick:" destination="7bK-jq-Zjz" id="7Et-BI-oya"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -365,18 +380,21 @@
         <!--Navigation Controller-->
         <scene sceneID="r7l-gg-dq7">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="vC3-pB-5Vb" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DjV-YW-jjY">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="9Uh-4I-OEL"/>
+                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="OUn-Lf-GKy"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SLD-UC-DBI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="jcx-Zl-wcC"/>
+    </inferredMetricsTieBreakers>
 </document>

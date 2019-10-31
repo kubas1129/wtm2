@@ -31,24 +31,27 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         navigationItem.leftBarButtonItem = editButtonItem
 
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(plusButton(_:)))
-        navigationItem.rightBarButtonItem = addButton
-        if let split = splitViewController {
-            let controllers = split.viewControllers
-            detailViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? DetailViewController
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         clearsSelectionOnViewWillAppear = splitViewController!.isCollapsed
         super.viewWillAppear(animated)
     }
-
-    @objc
-    func plusButton(_ sender: Any) {
-       performSegue(withIdentifier: "toSearchVC", sender: self)
+    
+////
+//    @objc
+//    func plusButton(_ sender: Any) {
+//       performSegue(withIdentifier: "toSearchVC", sender: self)
+//    }
+    
+    
+    @IBAction func onDodajClick(_ sender: Any) {
+        performSegue(withIdentifier: "toSearchVC", sender: self)
     }
     
+    
+    
+ 
     @IBAction func unwindToMaster(_ sender: UIStoryboardSegue){
         print("UNWIND")
     }
@@ -112,6 +115,10 @@ class MasterViewController: UITableViewController {
         cell.detailTextLabel!.text = "\(object.temp) C"
         //cell.imageView?.image = object.weather
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toShowDetail", sender: self)
     }
 
     
