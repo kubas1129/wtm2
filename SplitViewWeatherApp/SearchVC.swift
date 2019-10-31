@@ -21,9 +21,7 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var foundLabel: UILabel!
     
     var searchingCityName: String = ""
-    var cities : [CityInfo] = [
-        CityInfo(name: "Sab", woeid: 234543)
-    ]
+    var cities : [CityInfo] = []
     
     let urlToSearch = "https://www.metaweather.com/api/location/search/?query="
     
@@ -40,41 +38,58 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     @IBAction func inputText(_ sender: Any) {
         searchingCityName = inputText.text ?? ""
         foundLabel.text = "..."
-        //updateCities()
+        updateCities()
+    }
+    
+    @IBAction func vaklu(_ sender: Any) {
+        ///nothing here
     }
     
     
+    
     func updateCities(){
-        let fullUrl = URL(string: "\(urlToSearch)\(searchingCityName)")
-        
-        URLSession.shared.dataTask(with: fullUrl!) {
-            data, resp, err in
+        let fullUrl : URL? = URL(string: "\(urlToSearch)\(searchingCityName)")
+    
+        if (fullUrl != nil){
             
-            let dataJson = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String:Any]]
-            
-            self.cities.removeAll()
-            
-            var index = 0
-            var checkNext = true
-            
-            while checkNext {
-                let record = dataJson!![index]
+            URLSession.shared.dataTask(with: fullUrl!) {
+                data, resp, err in
                 
-                if record["title"] == nil {
-                    checkNext = false
-                    break
+                let dataJson = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String:Any]]
+                
+                self.cities.removeAll()
+                
+                var index = 0
+                
+                while (dataJson??.indices.contains(index))! {
+                    
+                    var record = dataJson!![index]
+                    
+                    let city = CityInfo(name: record["title"] as! String,
+                                        woeid: record["woeid"] as! Int)
+                    
+                    self.cities.append(city)
+                    index += 1
                 }
                 
-                let city = CityInfo(name: record["title"] as! String,
-                                    woeid: record["woeid"] as! Int)
+                DispatchQueue.main.async {
+                    self.updateTableView()
+                }
                 
-                self.cities.append(city)
-                
-                index += 1
+                }.resume()
+        }
+        else
+        {
+            DispatchQueue.main.async {
+                self.updateTableView()
             }
-            
-            self.foundLabel.text = String(self.cities.count)
-        }.resume()
+        }
+        
+    }
+    
+    func updateTableView(){
+        self.foundLabel.text = String(self.cities.count)
+        self.tableView.reloadData()
     }
     
     //dismiss powrot do poprzendiego widoku

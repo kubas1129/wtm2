@@ -214,9 +214,7 @@
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="inputText:" destination="aOF-cO-Mjl" eventType="editingDidEnd" id="kI8-B2-2dt"/>
-                                    <action selector="onExit:" destination="aOF-cO-Mjl" eventType="editingDidEndOnExit" id="0OK-Wt-2Hq"/>
-                                    <action selector="onTest:" destination="aOF-cO-Mjl" eventType="editingChanged" id="Tdm-ab-lIt"/>
-                                    <action selector="onValueChangeInput:" destination="aOF-cO-Mjl" eventType="valueChanged" id="7u0-Lb-342"/>
+                                    <action selector="vaklu:" destination="aOF-cO-Mjl" eventType="editingDidEndOnExit" id="Gp3-UG-QAg"/>
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6vM-Cl-GVM">
