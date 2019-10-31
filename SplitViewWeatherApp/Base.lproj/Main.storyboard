@@ -259,12 +259,23 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QPh-jk-dOW">
+                                <rect key="frame" x="148" y="504" width="90" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="3uz-3h-ngc"/>
+                                </constraints>
+                                <state key="normal" title="Wybierz"/>
+                                <connections>
+                                    <segue destination="zPd-3O-FOW" kind="unwind" unwindAction="unwindToMaster:" id="Viu-fl-mZZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6vM-Cl-GVM" firstAttribute="centerX" secondItem="Bqd-sE-jFk" secondAttribute="centerX" id="1yf-MR-bG3"/>
                             <constraint firstItem="occ-3U-s6q" firstAttribute="centerX" secondItem="Bqd-sE-jFk" secondAttribute="centerX" id="ETt-wa-iqV"/>
                             <constraint firstItem="wMz-lT-amm" firstAttribute="top" secondItem="2op-bf-8dk" secondAttribute="top" constant="10" id="FJ3-JJ-nUd"/>
+                            <constraint firstItem="QPh-jk-dOW" firstAttribute="centerX" secondItem="Bqd-sE-jFk" secondAttribute="centerX" id="IcY-pC-Ihb"/>
                             <constraint firstItem="2op-bf-8dk" firstAttribute="trailing" secondItem="6vM-Cl-GVM" secondAttribute="trailing" constant="10" id="MyO-RM-aZX"/>
                             <constraint firstItem="6vM-Cl-GVM" firstAttribute="top" secondItem="occ-3U-s6q" secondAttribute="bottom" constant="30" id="c3m-Ge-vCd"/>
                             <constraint firstItem="CxR-cV-Ly0" firstAttribute="leading" secondItem="occ-3U-s6q" secondAttribute="trailing" constant="20.5" id="h1z-4w-WRN"/>
@@ -272,6 +283,7 @@
                             <constraint firstItem="6vM-Cl-GVM" firstAttribute="leading" secondItem="2op-bf-8dk" secondAttribute="leading" constant="10" id="r37-Ob-inZ"/>
                             <constraint firstItem="occ-3U-s6q" firstAttribute="top" secondItem="wMz-lT-amm" secondAttribute="bottom" constant="30" id="tUZ-nJ-qWJ"/>
                             <constraint firstItem="CxR-cV-Ly0" firstAttribute="top" secondItem="wMz-lT-amm" secondAttribute="bottom" constant="33.5" id="yS6-Su-vSx"/>
+                            <constraint firstItem="QPh-jk-dOW" firstAttribute="top" secondItem="6vM-Cl-GVM" secondAttribute="bottom" constant="64.5" id="yed-j7-PrR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2op-bf-8dk"/>
                     </view>
@@ -282,8 +294,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7WX-XG-iQA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="zPd-3O-FOW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1672.8" y="-630.13493253373315"/>
+            <point key="canvasLocation" x="1624.8" y="-630.13493253373315"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="Nki-YV-4Qg">
@@ -333,7 +346,7 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
-                                    <segue destination="vC3-pB-5Vb" kind="showDetail" identifier="showDetail" id="6S0-TO-JiA"/>
+                                    <segue destination="aOF-cO-Mjl" kind="show" identifier="toSearchVC" id="F0I-Di-z57"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -344,9 +357,6 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Master" id="Zdf-7t-Un8"/>
-                    <connections>
-                        <segue destination="aOF-cO-Mjl" kind="show" identifier="toSearchVC" id="OxP-LC-owd"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rux-fX-hf1" sceneMemberID="firstResponder"/>
             </objects>
@@ -369,7 +379,4 @@
             <point key="canvasLocation" x="-45" y="129"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="6S0-TO-JiA"/>
-    </inferredMetricsTieBreakers>
 </document>

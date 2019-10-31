@@ -17,14 +17,13 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputText: UITextField!
-    
     @IBOutlet weak var foundLabel: UILabel!
     
     var searchingCityName: String = ""
     var cities : [CityInfo] = []
+    var selectCity : CityInfo = CityInfo(name: "", woeid: 0)
     
     let urlToSearch = "https://www.metaweather.com/api/location/search/?query="
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,12 +91,18 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         self.tableView.reloadData()
     }
     
-    //dismiss powrot do poprzendiego widoku
-    //performSeque..
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //zaznaczanie konkretnej komorki
+        selectCity = cities[indexPath.row]
+        //dismiss(animated: true, completion: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("SEGUE DZIALA")
+        let dest = segue.destination as! MasterViewController
+        dest.addCity(woeid: selectCity.woeid, cityName: selectCity.name)
+    }
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return cities.count
