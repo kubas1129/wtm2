@@ -22,9 +22,10 @@ class MasterViewController: UITableViewController {
     var citiesDetail: [CityDetail] = []
     var url = "https://www.metaweather.com/api/location/"
     let form = DateFormatter()
-    let dtForm = "yyy/MM/dd"
+    let dtForm = "yyyy/MM/dd"
     var now = Date()
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         form.dateFormat = dtForm
@@ -48,9 +49,7 @@ class MasterViewController: UITableViewController {
     @IBAction func onDodajClick(_ sender: Any) {
         performSegue(withIdentifier: "toSearchVC", sender: self)
     }
-    
-    
-    
+
  
     @IBAction func unwindToMaster(_ sender: UIStoryboardSegue){
         print("UNWIND")
@@ -58,8 +57,8 @@ class MasterViewController: UITableViewController {
     
     
     func addCity(woeid: Int, cityName: String){
-        let cityUrl = URL(string: "https://www.metaweather.com/api/location/523920/2018/5/15")
-        print("Adres: \(cityUrl)")
+        let strDate = form.string(from: now)
+        let cityUrl = URL(string: "https://www.metaweather.com/api/location/\(woeid)/\(strDate)")
         
         if(cityUrl != nil){
             
@@ -118,7 +117,17 @@ class MasterViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toShowDetail", sender: self)
+        //performSegue(withIdentifier: "toShowDetail", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toShowDetail"{
+            if let destVC = segue.destination as? DetailViewController{
+                if let indexPath = tableView.indexPathForSelectedRow{
+                    destVC.showWeather(name: citiesDetail[indexPath.row].name, woeid: citiesDetail[indexPath.row].woeid)
+                }
+            }
+        }
     }
 
     

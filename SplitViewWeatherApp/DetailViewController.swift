@@ -23,11 +23,13 @@ class DetailViewController: UIViewController {
     
     //Var and let
     let form = DateFormatter()
-    var url = "https://www.metaweather.com/api/location/44418/"
-    let dtForm = "yyy/MM/dd"
+    var url = "https://www.metaweather.com/api/location/"
+    let dtForm = "yyyy/MM/dd"
     var actualDay = 0
     let maxDayLookup = 5
     var now = Date()
+    var cityName = ""
+    var woeid = 0
     
     struct WeatherInfo{
         var date : String
@@ -47,9 +49,14 @@ class DetailViewController: UIViewController {
     
     func initSetup() {
         form.dateFormat = dtForm
-        parseJSON(date:now)
     }
     
+    func showWeather(name: String, woeid: Int){
+        form.dateFormat = dtForm
+        self.cityName = name
+        self.woeid = woeid
+        parseJSON(date: now)
+    }
     
     
     @IBAction func prevButton(_ sender: Any) {
@@ -98,7 +105,8 @@ class DetailViewController: UIViewController {
     
     func parseJSON(date: Date) {
         let strDate = form.string(from: date)
-        let fullUrl = URL(string: "\(url)\(strDate)")
+        let fullUrl = URL(string: "\(url)\(woeid)/\(strDate)")
+        print("ADRES: \(fullUrl)")
         
         URLSession.shared.dataTask(with: fullUrl!) {
             data, resp, err in
@@ -134,6 +142,7 @@ class DetailViewController: UIViewController {
         minTempLabel.text = "Min: \(state.minTemp.roundDouble()) C"
         velocityLabel.text = "\(state.windSpeed?.roundDouble() ?? 0)"
         directionLabel.text = "\(state.windDirection ?? "")"
+        cityLabel.text = "\(cityName)"
     }
     
 
