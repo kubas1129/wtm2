@@ -17,7 +17,6 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var inputText: UITextField!
-    @IBOutlet weak var foundLabel: UILabel!
     
     var searchingCityName: String = ""
     var cities : [CityInfo] = []
@@ -36,7 +35,6 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func inputText(_ sender: Any) {
         searchingCityName = inputText.text ?? ""
-        foundLabel.text = "..."
         updateCities()
     }
     
@@ -87,7 +85,6 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     }
     
     func updateTableView(){
-        self.foundLabel.text = String(self.cities.count)
         self.tableView.reloadData()
     }
     

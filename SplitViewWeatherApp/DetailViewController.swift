@@ -10,28 +10,38 @@ import UIKit
 
 class DetailViewController: UIViewController {
 
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var prevButton: UIButton!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var weatherCondition: UILabel!
-    @IBOutlet weak var weatherImage: UIImageView!
-    @IBOutlet weak var minTempLabel: UILabel!
-    @IBOutlet weak var maxTempLabel: UILabel!
-    @IBOutlet weak var velocityLabel: UILabel!
-    @IBOutlet weak var directionLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var pressureLabel: UILabel!
+    @IBOutlet weak var maximumTemperatureLabel: UILabel!
+    @IBOutlet weak var minimalTemperatureLabel: UILabel!
+    @IBOutlet weak var previousButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var currentWeatherIcon: UIImageView!
+    @IBOutlet weak var weatherDateLabel: UILabel!
+    @IBOutlet weak var rainLabel: UILabel!
+    @IBOutlet weak var windLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var pageLabel: UILabel!
     
     //Var and let
-    let form = DateFormatter()
-    var url = "https://www.metaweather.com/api/location/"
-    let dtForm = "yyyy/MM/dd"
-    var actualDay = 0
-    let maxDayLookup = 5
-    var now = Date()
+    let formatter = DateFormatter()
+    let iconsPath = "https://www.metaweather.com/static/img/weather/png/64/"
+    let dateFormat = "yyyy/MM/dd"
+    var path = "https://www.metaweather.com/api/location/"
+    
+    var current = 0
+    var delta = 5
+    let now = Date()
+    
     var cityName = ""
     var woeid = 0
     
-    struct WeatherInfo{
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        initSetup()
+    }
+    
+    struct DailyConditionWeather {
         var date : String
         var minTemp: Double
         var maxTemp: Double
@@ -39,117 +49,100 @@ class DetailViewController: UIViewController {
         var weather : String?
         var humidity : Int?
         var windSpeed: Double?
-        var windDirection: String?
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        initSetup()
     }
     
     func initSetup() {
-        form.dateFormat = dtForm
+        formatter.dateFormat = dateFormat
     }
     
     func showWeather(name: String, woeid: Int){
-        form.dateFormat = dtForm
+        formatter.dateFormat = dateFormat
         self.cityName = name
         self.woeid = woeid
-        parseJSON(date: now)
+        getJson(date: now)
     }
     
     
-    @IBAction func prevButton(_ sender: Any) {
-        if(actualDay > -maxDayLookup)
-        {
-            nextButton.isEnabled = true
-            actualDay -= 1
-            let updatedDate = Calendar.current.date(byAdding: .day, value: actualDay, to: now) ?? now
-            parseJSON(date: updatedDate)
-        }
-        else
-        {
-            prevButton.isEnabled = false
-        }
-    }
-    
-    @IBAction func nextButton(_ sender: Any) {
-        if (actualDay < maxDayLookup)
-        {
-            prevButton.isEnabled = true
-            actualDay += 1
-            let updatedDate = Calendar.current.date(byAdding: .day, value: actualDay, to: now) ?? now
-            parseJSON(date: updatedDate)
-        }
-        else
-        {
+    @IBAction func onNextItemButton(_ sender: Any) {
+        if (current < delta) {
+            previousButton.isEnabled = true
+            current+=1
+            let date = addDay(count: current)
+            getJson(date: date)
+        } else {
             nextButton.isEnabled = false
         }
     }
     
+    @IBAction func onPreviousItemButton(_ sender: Any) {
+        if (current > -delta) {
+            nextButton.isEnabled = true
+            current-=1
+            let date = addDay(count: current)
+            getJson(date: date)
+        } else{
+            previousButton.isEnabled = false
+        }
+    }
+    private func setPage() {
+        pageLabel.text = "\(current + delta)/\(2*delta)"
+    }
+    private func addDay(count: Int) -> Date {
+        return Calendar.current.date(byAdding: .day, value: count, to: now) ?? now
+    }
     
-    func updateImage(imgInfo: String){
-        let icons = "https://www.metaweather.com/static/img/weather/png/64/"
-        let tempUrl = URL(string:"\(icons)\(imgInfo).png")
-        
-        URLSession.shared.dataTask(with: tempUrl!){
-            data,resp,err in
+    
+    func getJson(date: Date) {
+        let dateAsString = formatter.string(from: date)
+        let joinedUrl = URL(string: "\(path)\(woeid)/\(dateAsString)")
+        URLSession.shared.dataTask(with: joinedUrl!) {
+            data, response, error in
+            let jsonResponseArray = try? JSONSerialization.jsonObject(with:data!,options: []) as? [[String: Any]]
+            
+            let jsonResponse = jsonResponseArray!![0]
+            let weather = DailyConditionWeather(date: dateAsString,
+                                                minTemp: jsonResponse["min_temp"] as! Double,
+                                                maxTemp: jsonResponse["max_temp"] as! Double,
+                                                pressure: jsonResponse["air_pressure"] as? Double,
+                                                weather: jsonResponse["weather_state_abbr"] as? String,
+                                                humidity: jsonResponse["humidity"] as? Int,
+                                                windSpeed: jsonResponse["wind_speed"] as? Double)
             DispatchQueue.main.async {
-                let img = UIImage(data: data!)
-                //Updating image
-                self.weatherImage.image =  img
+                self.setView(dailyConditionWeather: weather)
             }
-            }.resume()
-    }
-    
-    
-    func parseJSON(date: Date) {
-        let strDate = form.string(from: date)
-        let fullUrl = URL(string: "\(url)\(woeid)/\(strDate)")
-        print("ADRES: \(fullUrl)")
-        
-        URLSession.shared.dataTask(with: fullUrl!) {
-            data, resp, err in
-            let dateJson = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String:Any]]
-            
-            let firstRecord = dateJson!![0]
-            
-            let weatherInfo = WeatherInfo(date: strDate,
-                                          minTemp: firstRecord["min_temp"] as! Double,
-                                          maxTemp: firstRecord["max_temp"] as! Double,
-                                          pressure: firstRecord["air_pressure"] as? Double,
-                                          weather: firstRecord["weather_state_abbr"] as? String,
-                                          humidity: firstRecord["humidity"] as? Int,
-                                          windSpeed: firstRecord["wind_speed"] as? Double,
-                                          windDirection: firstRecord["wind_direction_compass"] as? String)
-            
-            DispatchQueue.main.async{
-                //method to update UI
-                self.updateUI(state: weatherInfo)
-            }
-            
-            //loading image
-            self.updateImage(imgInfo: weatherInfo.weather ?? "")
+            self.loadCurrentWeatherIcon(weather: weather.weather ?? "")
             
             }.resume()
     }
-    
-    func updateUI(state: WeatherInfo)  {
-        //exec -> updatePage
-        weatherCondition.text = state.weather ?? ""
-        dateLabel.text = state.date
-        maxTempLabel.text = "Max: \(state.maxTemp.roundDouble()) C"
-        minTempLabel.text = "Min: \(state.minTemp.roundDouble()) C"
-        velocityLabel.text = "\(state.windSpeed?.roundDouble() ?? 0)"
-        directionLabel.text = "\(state.windDirection ?? "")"
-        cityLabel.text = "\(cityName)"
-    }
-    
 
+    
+    func loadCurrentWeatherIcon(weather: String) {
+        let url = URL(string: "\(iconsPath)\(weather).png")
+        URLSession.shared.dataTask(with: url!) {
+            data, response, error in
+            DispatchQueue.main.async {
+                let image = UIImage(data: data!)
+                self.currentWeatherIcon.image = image
+                
+            }
+            }.resume()
+        
+    }
+    
+    func setView(dailyConditionWeather: DailyConditionWeather)  {
+        setPage()
+        typeLabel.text = dailyConditionWeather.weather ?? ""
+        dateLabel.text = dailyConditionWeather.date
+        rainLabel.text = "Wilgotność powietrza: \(dailyConditionWeather.humidity ?? 0) %"
+        windLabel.text = "Wiatr: \(dailyConditionWeather.windSpeed?.roundToPlaces() ?? 0) )"
+        pressureLabel.text = "Ciśnienie atmosferyczne: \(dailyConditionWeather.pressure ?? 0) Bar"
+        maximumTemperatureLabel.text = "Temperatura maksymalna: \(dailyConditionWeather.maxTemp.roundToPlaces()) C"
+        minimalTemperatureLabel.text = "Temperatura minimalna: \(dailyConditionWeather.minTemp.roundToPlaces()) C"
+    }
+    
     var detailItem: NSDate? {
-        didSet {
-            // Update the view.
-            
+        didSet{
+            //update view
         }
     }
 
@@ -158,7 +151,7 @@ class DetailViewController: UIViewController {
 
 extension Double {
     /// Rounds the double to decimal places value
-    func roundDouble() -> Double {
+    func roundToPlaces() -> Double {
         let divisor = pow(10.0, Double(2))
         return (self * divisor).rounded() / divisor
     }
