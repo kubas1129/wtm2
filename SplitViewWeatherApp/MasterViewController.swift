@@ -47,7 +47,7 @@ class MasterViewController: UITableViewController {
     
     
     @IBAction func onDodajClick(_ sender: Any) {
-        performSegue(withIdentifier: "toSearchVC", sender: self)
+        //performSegue(withIdentifier: "toSearchVC", sender: self)
     }
 
  

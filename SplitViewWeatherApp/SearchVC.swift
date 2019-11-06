@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    
     
     struct CityInfo{
         let name: String
@@ -19,18 +23,67 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var inputText: UITextField!
     @IBOutlet weak var foundLabel: UILabel!
     
+    @IBOutlet weak var localizationLabel: UILabel!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
     var searchingCityName: String = ""
     var cities : [CityInfo] = []
     var selectCity : CityInfo = CityInfo(name: "", woeid: 0)
     
     let urlToSearch = "https://www.metaweather.com/api/location/search/?query="
     
+    let locationManager = CLLocationManager()
+    let regionInMeters: Double = 10000
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        checkLocationServices()
 
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
+    }
+    
+    func checkLocationAuthorization() {
+        switch CLLocationManager.authorizationStatus() {
+        case .authorizedWhenInUse:
+            mapView.showsUserLocation = true
+            centerViewOnUserLocation()
+            locationManager.startUpdatingLocation()
+            break
+        case .denied:
+            // Show alert instructing them how to turn on permissions
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .restricted:
+            // Show an alert letting them know what's up
+            break
+        case .authorizedAlways:
+            break
+        }
+    }
+    
+    func centerViewOnUserLocation() {
+        if let location = locationManager.location?.coordinate {
+            let region = MKCoordinateRegion.init(center: location, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+            mapView.setRegion(region, animated: true)
+        }
+    }
+    
+    func checkLocationServices() {
+        if CLLocationManager.locationServicesEnabled() {
+            setupLocationManager()
+            checkLocationAuthorization()
+        } else {
+            // Show alert letting the user know they have to turn this on.
+        }
+    }
+    
+    func setupLocationManager() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
     
@@ -117,4 +170,18 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
    
 
+}
+
+extension SearchVC: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        let region = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        checkLocationAuthorization()
+    }
 }
