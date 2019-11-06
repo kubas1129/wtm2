@@ -23,8 +23,9 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var inputText: UITextField!
     @IBOutlet weak var foundLabel: UILabel!
     
-    @IBOutlet weak var localizationLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var localizationButton: UIButton!
+    @IBOutlet weak var localizationLabel: UILabel!
     
     
     var searchingCityName: String = ""
@@ -35,22 +36,22 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     let locationManager = CLLocationManager()
     let regionInMeters: Double = 10000
+    var previousLocation: CLLocation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         checkLocationServices()
-
+        
         // Do any additional setup after loading the view.
         tableView.delegate = self
         tableView.dataSource = self
     }
     
+    
     func checkLocationAuthorization() {
         switch CLLocationManager.authorizationStatus() {
         case .authorizedWhenInUse:
-            mapView.showsUserLocation = true
-            centerViewOnUserLocation()
-            locationManager.startUpdatingLocation()
+            startTackingUserLocation()
             break
         case .denied:
             // Show alert instructing them how to turn on permissions
@@ -86,6 +87,20 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
+    func getCenterLocation(for mapView: MKMapView) -> CLLocation {
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
+        
+        return CLLocation(latitude: latitude, longitude: longitude)
+    }
+    
+    func startTackingUserLocation() {
+        mapView.showsUserLocation = true
+        centerViewOnUserLocation()
+        locationManager.startUpdatingLocation()
+        previousLocation = getCenterLocation(for: mapView)
+    }
+    
     
     @IBAction func inputText(_ sender: Any) {
         searchingCityName = inputText.text ?? ""
@@ -97,7 +112,12 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         ///nothing here
     }
     
+    @IBAction func onLocalizationPick(_ sender: Any) {
+        
+    }
     
+    
+    //WEATHER API HANDLER
     
     func updateCities(){
         let fullUrl : URL? = URL(string: "\(urlToSearch)\(searchingCityName)")
@@ -168,20 +188,44 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-   
-
 }
 
 extension SearchVC: CLLocationManagerDelegate {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let location = locations.last else { return }
-        let region = MKCoordinateRegion.init(center: location.coordinate, latitudinalMeters: regionInMeters, longitudinalMeters: regionInMeters)
-        mapView.setRegion(region, animated: true)
-    }
-    
-    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         checkLocationAuthorization()
+    }
+}
+
+extension SearchVC: MKMapViewDelegate{
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        let center = getCenterLocation(for: mapView)
+        let geoCoder = CLGeocoder()
+        
+        guard let previousLocation = self.previousLocation else { return }
+        
+        guard center.distance(from: previousLocation) > 50 else { return }
+        self.previousLocation = center
+        
+        geoCoder.reverseGeocodeLocation(center) { [weak self] (placemarks, error) in
+            guard let self = self else { return }
+            
+            if let _ = error {
+                print("ERROR")
+                return }
+            
+            guard let placemark = placemarks?.first else {
+                print("NO PLACEMAARK")
+                return }
+            
+            //let streetNumber = placemark.subThoroughfare ?? ""
+            //let streetName = placemark.thoroughfare ?? ""
+            let city = placemark.subAdministrativeArea ?? ""
+            let country = placemark.country ?? ""
+            
+            DispatchQueue.main.async {
+                self.localizationLabel.text = "\(country), \(city)"
+            }
+        }
+        
     }
 }
