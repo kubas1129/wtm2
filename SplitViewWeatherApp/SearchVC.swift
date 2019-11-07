@@ -31,6 +31,7 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var searchingCityName: String = ""
     var cities : [CityInfo] = []
     var selectCity : CityInfo = CityInfo(name: "", woeid: 0)
+    var localizationCity : CityInfo = CityInfo(name: "", woeid: 0)
     
     let urlToSearch = "https://www.metaweather.com/api/location/search/?query="
     
@@ -101,7 +102,6 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
         previousLocation = getCenterLocation(for: mapView)
     }
     
-    
     @IBAction func inputText(_ sender: Any) {
         searchingCityName = inputText.text ?? ""
         foundLabel.text = "..."
@@ -113,7 +113,7 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
     }
     
     @IBAction func onLocalizationPick(_ sender: Any) {
-        
+        selectCity = localizationCity
     }
     
     
@@ -157,6 +157,25 @@ class SearchVC: UIViewController,UITableViewDelegate, UITableViewDataSource {
             }
         }
         
+    }
+    
+    
+    func updateLocalizationCity(){
+        let locURL : URL? = URL(string: "https://www.metaweather.com/api/location/search/?lattlong=\(previousLocation?.coordinate.latitude ?? 0.0),\(previousLocation?.coordinate.longitude ?? 0.0)")
+        
+        if(locURL != nil)
+        {
+            URLSession.shared.dataTask(with: locURL!) {
+                data, resp, err in
+             
+                let dataJson = try? JSONSerialization.jsonObject(with: data!, options: []) as? [[String:Any]]
+                
+                var record = dataJson!![0]
+                
+                self.localizationCity = CityInfo(name: record["title"] as! String,
+                                    woeid: record["woeid"] as! Int)
+            }.resume()
+        }
     }
     
     func updateTableView(){
@@ -223,6 +242,7 @@ extension SearchVC: MKMapViewDelegate{
             let country = placemark.country ?? ""
             
             DispatchQueue.main.async {
+                self.updateLocalizationCity()
                 self.localizationLabel.text = "\(country), \(city)"
             }
         }
